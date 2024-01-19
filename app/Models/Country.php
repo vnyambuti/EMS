@@ -23,9 +23,9 @@ class Country extends Model
         return $this->belongsTo(Country::class);
     }
 
-    function employeese()
+    function users()
     {
-        return $this->hasMany(Employeese::class);
+        return $this->hasMany(User::class);
     }
     function companies()
     {
@@ -34,6 +34,11 @@ class Country extends Model
     function branch()
     {
         return $this->hasMany(Company::class);
+    }
+
+    function states()
+    {
+        return $this->hasMany(State::class);
     }
 }
 

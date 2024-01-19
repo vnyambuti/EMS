@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Livewire\Features\SupportConsoleCommands\Commands\Upgrade\ThirdPartyUpgradeNotice;
 
 class User extends Authenticatable
 {
@@ -18,8 +19,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+      
         'email',
+        'firstname',
+        'lastname',
+        'address',
+        'city_id',
+        'state_id',
+        'country_id',
+        'zip',
+        'birthdate',
         'password',
     ];
 
@@ -42,4 +51,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    function city()  {
+        return $this->belongsTo(City::class);
+    }
+
+    function state()  {
+        return $this->belongsTo(State::class);
+    }
+
+    function country()  {
+        return $this->belongsTo(Country::class);
+    }
 }

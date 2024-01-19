@@ -13,15 +13,8 @@ return new class extends Migration
     {
         Schema::create('employeeses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('address')->nullable();
             $table->foreignId('department_id')->constrained();
-            $table->foreignId('city_id')->constrained();
-            $table->foreignId('state_id')->constrained()->cascadeOnUpdate();
-            $table->foreignId('country_id')->constrained()->cascadeOnUpdate();
-            $table->string('zip')->nullable();
-            $table->date('birthdate');
+            $table->foreignId('user_id')->constrained();
             $table->date('date_hired');
             $table->timestamps();
         });

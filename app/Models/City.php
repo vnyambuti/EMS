@@ -18,10 +18,14 @@ class City extends Model
         return $this->belongsTo(State::class);
     }
 
-    function employeese()  {
-        return $this->hasMany(Employeese::class);
+    function users()  {
+        return $this->hasMany(User::class);
     }
     function companies()
+    {
+        return $this->hasMany(Company::class);
+    }
+    function branch()
     {
         return $this->hasMany(Company::class);
     }
