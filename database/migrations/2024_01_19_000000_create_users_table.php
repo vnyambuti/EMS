@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('email');
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('name');
+            $table->string('phone');
             $table->string('address')->nullable();
             $table->foreignId('city_id')->constrained();
             $table->foreignId('state_id')->constrained()->cascadeOnUpdate();
