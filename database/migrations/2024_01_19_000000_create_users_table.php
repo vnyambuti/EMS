@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address')->nullable();
-            $table->foreignId('city_id')->constrained();
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->foreignId('state_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('country_id')->constrained()->cascadeOnUpdate();
             $table->string('zip')->nullable();
