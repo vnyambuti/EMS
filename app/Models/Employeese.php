@@ -16,4 +16,5 @@ class Employeese extends Model
     function department() {
         return $this->belongsTo(Department::class);
     }
+
 }

@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->unsignedBigInteger('state_id');
-            $table->foreign('state_id')->references('id')->on('states')->cascadeOnUpdate();
-            $table->timestamps();
+        Schema::table('employeeses', function (Blueprint $table) {
+            $table->foreignId('designation_id')->constrained();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::table('employeeses', function (Blueprint $table) {
+            //
+        });
     }
 };

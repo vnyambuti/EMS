@@ -23,6 +23,9 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->passwordReset()
+            ->emailVerification()
+            ->profile()
             ->default()
             ->id('admin')
             ->path('admin')

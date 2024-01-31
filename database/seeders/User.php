@@ -28,7 +28,7 @@ class User extends Seeder
         $state->save();
 
         $city = new City();
-        $city->name = "kenya";
+        $city->name = "Nairobi";
         $city->state_id = $state->id;
         $city->save();
 
