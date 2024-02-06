@@ -9,7 +9,7 @@ class Branch extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name','address','company_id','city_id','state_id'
+        'name','address','company_id','city_id','state_id','country_id'
     ];
 
     function company() {
@@ -20,5 +20,11 @@ class Branch extends Model
     }
     function state() {
         return $this->belongsTo(State::class);
+    }
+    function country() {
+        return $this->belongsTo(State::class);
+    }
+    function departments()  {
+        return $this->hasMany(Department::class);
     }
 }

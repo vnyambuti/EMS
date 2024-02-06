@@ -20,15 +20,16 @@ class CityResource extends Resource
 {
     protected static ?string $model = City::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+    protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('Name')->placeholder('Nairobi'),
+                TextInput::make('name')->label('Name')->placeholder('Nairobi')->required(),
                 Select::make('state_id')
-                ->relationship(name: 'state', titleAttribute: 'name')
+                ->relationship(name: 'state', titleAttribute: 'name')->required()
             ]);
     }
 

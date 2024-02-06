@@ -19,15 +19,16 @@ class CountryResource extends Resource
 {
     protected static ?string $model = Country::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-globe-europe-africa';
+    protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 
-                TextInput::make('name')->label('Name')->placeholder('kenya'),
-                TextInput::make('country_code')->label('Country Code')->placeholder('+254')
+                TextInput::make('name')->label('Name')->placeholder('kenya')->required(),
+                TextInput::make('country_code')->label('Country Code')->placeholder('+254')->required()
             ]);
     }
 
