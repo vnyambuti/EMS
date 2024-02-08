@@ -65,4 +65,6 @@ class User extends Authenticatable
     function country()  {
         return $this->belongsTo(Country::class);
     }
+
+    
 }

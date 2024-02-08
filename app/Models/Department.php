@@ -10,7 +10,7 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable=[
-        'name','branch_id','designation_id'
+        'name','branch_id'
     ];
 
     function branch()  {
@@ -18,7 +18,7 @@ class Department extends Model
     }
 
     function designations()  {
-        return $this->belongsToMany(Designation::class);
+        return $this->hasMany(Designation::class);
     }
     
 }

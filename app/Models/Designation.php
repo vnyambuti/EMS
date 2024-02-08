@@ -9,15 +9,17 @@ class Designation extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-'name','department_id'
+    protected $fillable = [
+        'name', 'department_id'
     ];
 
-    function department()  {
-        return $this->belongsToMany(Department::class);
+    function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 
-    function employee()  {
-        return $this->belongsTo(Employeese::class);
+    function employee()
+    {
+        return $this->hasMany(Employeese::class);
     }
 }
