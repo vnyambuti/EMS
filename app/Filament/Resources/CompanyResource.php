@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
 use App\Filament\Resources\CompanyResource\RelationManagers;
+use App\Filament\Resources\CompanyResource\RelationManagers\BranchRelationManager;
 use App\Models\Company;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -69,7 +70,7 @@ class CompanyResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+           RelationManagers\BranchesRelationManager::class,
         ];
     }
 

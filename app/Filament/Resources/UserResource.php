@@ -5,7 +5,9 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use Filament\Actions\ActionGroup;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -22,12 +24,31 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationGroup = 'Acl';
+    // 'email',
+    // 'firstname',
+    // 'lastname',
+    // 'address',
+    // 'city_id',
+    // 'state_id',
+    // 'country_id',
+    // 'zip',
+    // 'birthdate',
+    // 'password',
+    // 'phone',
+    // 'name'
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('Name')->placeholder('InteliCreep')->required(),
+                TextInput::make('firstname')->label('FirstName')->unique()->required(),
+                TextInput::make('lastname')->label('LastName')->unique()->required(),
+                TextInput::make('name')->label('Username')->unique()->required(),
+                TextInput::make('email')->label('Email')->unique()->required(),
+                TextInput::make('phone')->label('Phone')->unique()->required(),
+                TextInput::make('address')->label('Address'),
+                TextInput::make('zip')->label('Zip'),
+                DatePicker::make('birthdate')->label('BirthDate')->required(),
                 Select::make('country_id')
                 ->relationship(name: 'country', titleAttribute: 'name')->searchable()->required(),
                 Select::make('state_id')
@@ -56,8 +77,11 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

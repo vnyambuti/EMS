@@ -66,5 +66,9 @@ class User extends Authenticatable
         return $this->belongsTo(Country::class);
     }
 
+    function emplayeese()  {
+        return $this->hasMany(Employeese::class);
+    }
+
     
 }

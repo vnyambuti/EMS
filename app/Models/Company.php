@@ -12,7 +12,7 @@ class Company extends Model
         'state_id','city_id','country_id','name','address'
     ];
 
-    function branch()
+    function branches()
     {
         return $this->hasMany(Company::class);
     }
